@@ -1,0 +1,1194 @@
+[
+  {
+    "termo": "API",
+    "definicao": "Uma API é uma forma de uma aplicação conversar com outra.",
+    "exemplo": "fetch('https://api.exemplo.com/dados')",
+    "usar_em": "Quando você precisa buscar ou enviar dados para outro serviço.",
+    "evitar": "Quando você precisa apenas manipular HTML localmente.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/API"
+  },
+  {
+    "termo": "DOM",
+    "definicao": "É a representação do HTML que o JavaScript consegue alterar.",
+    "exemplo": "document.querySelector('h1').textContent = 'Oi';",
+    "usar_em": "Para manipular elementos, textos, estilos ou eventos.",
+    "evitar": "Quando você só precisa mudar dados sem mexer na interface.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model"
+  },
+  {
+    "termo": "Array",
+    "definicao": "Um array é uma lista ordenada de valores.",
+    "exemplo": "let frutas = ['maçã', 'banana', 'uva'];",
+    "usar_em": "Quando você precisa armazenar vários itens em ordem.",
+    "evitar": "Quando precisa de pares nome/valor — prefira Objetos.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array"
+  },
+  {
+    "termo": "Object",
+    "definicao": "Coleção de dados organizados em pares de chave e valor.",
+    "exemplo": "const carro = { marca: 'Ford', cor: 'Azul' };",
+    "usar_em": "Para agrupar características de uma entidade.",
+    "evitar": "Quando a ordem dos elementos é o mais importante — prefira Arrays.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object"
+  },
+  {
+    "termo": "Function",
+    "definicao": "Um bloco de código reutilizável que realiza uma tarefa específica.",
+    "exemplo": "function somar(a, b) { return a + b; }",
+    "usar_em": "Sempre que precisar repetir uma lógica várias vezes.",
+    "evitar": "Evite funções gigantes que fazem muitas coisas diferentes ao mesmo tempo.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions"
+  },
+  {
+    "termo": "Arrow Function",
+    "definicao": "Uma forma mais curta e moderna de escrever funções.",
+    "exemplo": "const somar = (a, b) => a + b;",
+    "usar_em": "Callbacks e funções curtas.",
+    "evitar": "Quando você precisa usar o contexto do 'this' dinamicamente.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
+  },
+  {
+    "termo": "Variable",
+    "definicao": "Um espaço na memória para guardar um valor.",
+    "exemplo": "let idade = 25;",
+    "usar_em": "Para armazenar dados que serão usados depois.",
+    "evitar": "Evite 'var' em código moderno; prefira 'let' ou 'const'.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/First_steps/Variables"
+  },
+  {
+    "termo": "String",
+    "definicao": "Tipo de dado usado para representar texto.",
+    "exemplo": "const nome = 'Maria';",
+    "usar_em": "Qualquer manipulação de texto.",
+    "evitar": "Não use para cálculos matemáticos.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String"
+  },
+  {
+    "termo": "Boolean",
+    "definicao": "Tipo de dado que tem apenas dois valores: verdadeiro ou falso.",
+    "exemplo": "let estaLogado = true;",
+    "usar_em": "Em condições (if/else) e loops.",
+    "evitar": "Não use strings 'true' ou 'false' quando puder usar o tipo real.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+  },
+  {
+    "termo": "If / Else",
+    "definicao": "Estrutura condicional para tomar decisões no código.",
+    "exemplo": "if (idade >= 18) { permitir() } else { bloquear() }",
+    "usar_em": "Quando o código precisa seguir caminhos diferentes.",
+    "evitar": "Muitos 'if/else' aninhados (código espaguete).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/if...else"
+  },
+  {
+    "termo": "Loop (For)",
+    "definicao": "Estrutura de repetição para executar código várias vezes.",
+    "exemplo": "for(let i=0; i<5; i++) { console.log(i); }",
+    "usar_em": "Para percorrer listas ou repetir tarefas.",
+    "evitar": "Loops infinitos que travam o navegador.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Loops_and_iteration"
+  },
+  {
+    "termo": "JSON",
+    "definicao": "Formato leve de troca de dados, muito usado na web.",
+    "exemplo": "{ \"id\": 1, \"nome\": \"Ana\" }",
+    "usar_em": "Para enviar ou receber dados de servidores.",
+    "evitar": "Não é a mesma coisa que um objeto JS, embora pareça.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON"
+  },
+  {
+    "termo": "Promise",
+    "definicao": "Objeto que representa o sucesso ou falha de uma operação futura.",
+    "exemplo": "promessa.then(dados => console.log(dados));",
+    "usar_em": "Operações assíncronas (banco de dados, APIs).",
+    "evitar": "Não bloqueie o código principal esperando a resposta.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+  },
+  {
+    "termo": "Async / Await",
+    "definicao": "Sintaxe moderna para trabalhar com Promises de forma mais limpa.",
+    "exemplo": "const dados = await fetch(url);",
+    "usar_em": "Para ler código assíncrono como se fosse síncrono.",
+    "evitar": "Não esqueça de usar dentro de funções marcadas como 'async'.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/async_function"
+  },
+  {
+    "termo": "Event Listener",
+    "definicao": "Função que espera uma ação do usuário (clique, tecla, etc).",
+    "exemplo": "btn.addEventListener('click', dispararFuncao);",
+    "usar_em": "Para tornar a página interativa.",
+    "evitar": "Adicionar muitos listeners no mesmo elemento sem necessidade.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/addEventListener"
+  },
+  {
+    "termo": "Console.log",
+    "definicao": "Função para exibir mensagens no painel de desenvolvedor do navegador.",
+    "exemplo": "console.log('O valor é:', x);",
+    "usar_em": "Para testar valores e encontrar erros (debug).",
+    "evitar": "Deixar 'console.log' espalhado no código final de produção.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/Console/log"
+  },
+  {
+    "termo": "Local Storage",
+    "definicao": "Armazenamento no navegador que persiste mesmo fechando a página.",
+    "exemplo": "localStorage.setItem('tema', 'escuro');",
+    "usar_em": "Salvar preferências do usuário simples.",
+    "evitar": "Nunca salve senhas ou dados sensíveis aqui.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage"
+  },
+  {
+    "termo": "HTTP GET",
+    "definicao": "Método de requisição usado para pedir dados a um servidor.",
+    "exemplo": "fetch('/usuarios') // Padrão é GET",
+    "usar_em": "Para ler informações.",
+    "evitar": "Não use GET para enviar senhas (elas ficam na URL).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/GET"
+  },
+  {
+    "termo": "HTTP POST",
+    "definicao": "Método de requisição usado para enviar dados para serem processados.",
+    "exemplo": "fetch('/login', { method: 'POST', body: dados })",
+    "usar_em": "Para criar recursos ou enviar formulários.",
+    "evitar": "Não use se você só quer ler um dado simples.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods/POST"
+  },
+  {
+    "termo": "404",
+    "definicao": "Erro que indica que o recurso solicitado não foi encontrado.",
+    "exemplo": "Aparece ao acessar uma página que não existe.",
+    "usar_em": "É automático, resposta do servidor.",
+    "evitar": "Não é algo que você 'usa', é um status de erro.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/404"
+  },
+  {
+    "termo": "500",
+    "definicao": "Erro interno do servidor. O problema não é com seu navegador.",
+    "exemplo": "Tela de 'Internal Server Error'.",
+    "usar_em": "Indica falha no back-end.",
+    "evitar": "Como dev back-end, evite deixar o erro chegar cru ao usuário.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/500"
+  },
+  {
+    "termo": "CSS",
+    "definicao": "Linguagem de estilos usada para controlar o visual da página.",
+    "exemplo": "body { background-color: black; }",
+    "usar_em": "Para cores, fontes, layouts e animações.",
+    "evitar": "Não use para lógica de programação, use JS.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/CSS"
+  },
+  {
+    "termo": "HTML",
+    "definicao": "Linguagem de marcação que define a estrutura da página.",
+    "exemplo": "<h1>Título Principal</h1>",
+    "usar_em": "Para criar o esqueleto e conteúdo do site.",
+    "evitar": "Não use para estilizar (use CSS) ou comportamento (use JS).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTML"
+  },
+  {
+    "termo": "Git",
+    "definicao": "Sistema de controle de versão para rastrear mudanças no código.",
+    "exemplo": "git commit -m 'Corrigindo bug';",
+    "usar_em": "Para salvar o histórico do projeto e trabalhar em equipe.",
+    "evitar": "Não confunda com GitHub (que é onde o Git fica hospedado).",
+    "link": "https://git-scm.com/doc"
+  },
+  {
+    "termo": "Map",
+    "definicao": "Método que percorre um array e cria um novo array transformando os dados.",
+    "exemplo": "const dobros = numeros.map(n => n * 2);",
+    "usar_em": "Quando você quer transformar uma lista de dados em outra (ex: dados em HTML).",
+    "evitar": "Não use se você não precisar do novo array retornado (use forEach).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+  },
+  {
+    "termo": "Filter",
+    "definicao": "Método que cria um novo array contendo apenas os itens que passaram num teste.",
+    "exemplo": "const maiores = idades.filter(idade => idade >= 18);",
+    "usar_em": "Para remover itens indesejados de uma lista.",
+    "evitar": "Se você quer apenas encontrar o primeiro item (use find).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"
+  },
+  {
+    "termo": "Reduce",
+    "definicao": "Método que reduz todos os valores de um array a um único valor.",
+    "exemplo": "const total = precos.reduce((acc, atual) => acc + atual, 0);",
+    "usar_em": "Somar valores, agrupar dados ou transformar arrays em objetos.",
+    "evitar": "Para tarefas simples que o map ou filter resolvem de forma mais legível.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+  },
+  {
+    "termo": "Callback",
+    "definicao": "Uma função passada como argumento para outra função.",
+    "exemplo": "botao.addEventListener('click', minhaFuncaoCallback);",
+    "usar_em": "Para executar código após algo acontecer ou terminar.",
+    "evitar": "O 'Callback Hell' (muitas callbacks umas dentro das outras).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Callback_function"
+  },
+  {
+    "termo": "Scope (Escopo)",
+    "definicao": "Define onde variáveis e funções são acessíveis no código.",
+    "exemplo": "Uma variável criada dentro de uma função não existe fora dela.",
+    "usar_em": "Para proteger variáveis e evitar conflitos de nomes.",
+    "evitar": "Criar muitas variáveis no escopo global (window).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Scope"
+  },
+  {
+    "termo": "Null",
+    "definicao": "Representa a ausência intencional de um valor.",
+    "exemplo": "let usuario = null; // Ainda não logou",
+    "usar_em": "Para indicar que uma variável está vazia de propósito.",
+    "evitar": "Não confundir com undefined (que é quando o valor não foi definido).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/null"
+  },
+  {
+    "termo": "Undefined",
+    "definicao": "Valor de uma variável que foi declarada mas não inicializada.",
+    "exemplo": "let a; console.log(a); // undefined",
+    "usar_em": "Geralmente é o JavaScript que atribui isso automaticamente.",
+    "evitar": "Evite atribuir 'undefined' manualmente, prefira 'null'.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/undefined"
+  },
+  {
+    "termo": "Destructuring",
+    "definicao": "Sintaxe para extrair dados de arrays ou objetos em variáveis distintas.",
+    "exemplo": "const { nome, idade } = pessoa;",
+    "usar_em": "Para deixar o código mais limpo ao acessar propriedades.",
+    "evitar": "Se o objeto for muito complexo/aninhado, pode ficar confuso.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+  },
+  {
+    "termo": "Spread Operator",
+    "definicao": "Operador (...) que expande um array ou objeto.",
+    "exemplo": "const novos = [...antigos, 'item novo'];",
+    "usar_em": "Copiar arrays, combinar objetos ou passar múltiplos argumentos.",
+    "evitar": "Cuidado com cópias rasas (shallow copies) em dados aninhados.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+  },
+  {
+    "termo": "Flexbox",
+    "definicao": "Modelo de layout CSS unidimensional (linha ou coluna).",
+    "exemplo": "display: flex; justify-content: center;",
+    "usar_em": "Alinhar itens, centralizar conteúdo e distribuir espaço.",
+    "evitar": "Para layouts bidimensionais complexos (use Grid).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Learn/CSS/CSS_layout/Flexbox"
+  },
+  {
+    "termo": "Grid Layout",
+    "definicao": "Modelo de layout CSS bidimensional (linhas e colunas).",
+    "exemplo": "display: grid; grid-template-columns: 1fr 1fr;",
+    "usar_em": "Criar a estrutura macro da página (cabeçalho, sidebar, rodapé).",
+    "evitar": "Para alinhamentos muito simples onde Flexbox resolve mais fácil.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_Grid_Layout"
+  },
+  {
+    "termo": "Responsive",
+    "definicao": "Técnica para o site se adaptar a diferentes tamanhos de tela.",
+    "exemplo": "@media (max-width: 600px) { ... }",
+    "usar_em": "Para garantir que o site funcione em celulares e tablets.",
+    "evitar": "Criar sites com largura fixa (pixels estáticos).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Learn/CSS/CSS_layout/Responsive_Design"
+  },
+  {
+    "termo": "NPM",
+    "definicao": "Gerenciador de pacotes padrão para o ambiente Node.js.",
+    "exemplo": "npm install react",
+    "usar_em": "Para instalar bibliotecas e ferramentas de terceiros.",
+    "evitar": "Instalar pacotes suspeitos ou sem manutenção.",
+    "link": "https://docs.npmjs.com/about-npm"
+  },
+  {
+    "termo": "Framework",
+    "definicao": "Estrutura de código pronta que dita como você deve programar.",
+    "exemplo": "Angular, Next.js, Vue.",
+    "usar_em": "Para ganhar velocidade e padrão em projetos grandes.",
+    "evitar": "Usar um framework pesado para uma página simples.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Framework"
+  },
+  {
+    "termo": "Library (Biblioteca)",
+    "definicao": "Conjunto de códigos que você chama quando precisa (você está no controle).",
+    "exemplo": "React (sim, é uma lib!), Lodash, jQuery.",
+    "usar_em": "Resolver problemas específicos sem ditar a arquitetura toda.",
+    "evitar": "Incluir bibliotecas gigantes para usar apenas uma função.",
+    "link": "https://developer.mozilla.org/en-US/docs/Glossary/Library"
+  },
+  {
+    "termo": "Bug",
+    "definicao": "Falha ou erro no código que causa comportamento inesperado.",
+    "exemplo": "O botão não funciona quando clicado.",
+    "usar_em": "Termo geral para problemas a serem corrigidos.",
+    "evitar": "Dizer 'não funciona' sem explicar o que aconteceu (use logs).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Bug"
+  },
+  {
+    "termo": "Deploy",
+    "definicao": "Processo de colocar o site ou aplicação no ar (internet).",
+    "exemplo": "Fazer deploy na Vercel ou Netlify.",
+    "usar_em": "Quando o código está pronto para os usuários.",
+    "evitar": "Fazer deploy de código não testado em sexta-feira à tarde.",
+    "link": "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment"
+  },
+  {
+    "termo": "200 OK",
+    "definicao": "Status HTTP que indica sucesso na requisição.",
+    "exemplo": "O servidor devolveu os dados corretamente.",
+    "usar_em": "Resposta padrão de sucesso.",
+    "evitar": "Retornar 200 OK quando houve um erro na regra de negócio.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/200"
+  },
+  {
+    "termo": "403 Forbidden",
+    "definicao": "O servidor entendeu o pedido, mas se recusa a autorizá-lo.",
+    "exemplo": "Tentar acessar área de admin sem ser admin.",
+    "usar_em": "Controle de acesso e permissões.",
+    "evitar": "Confundir com 401 (que é quando você não fez login).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/403"
+  },
+  {
+    "termo": "Accessibility (A11y)",
+    "definicao": "Prática de tornar sites utilizáveis por todas as pessoas, inclusive com deficiência.",
+    "exemplo": "Usar tags 'alt' em imagens para leitores de tela.",
+    "usar_em": "Sempre. É um direito do usuário e dever do dev.",
+    "evitar": "Ignorar contraste de cores e navegação por teclado.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/Accessibility"
+  },
+  {
+    "termo": "Template Literals",
+    "definicao": "Forma moderna de criar strings permitindo pular linhas e inserir variáveis.",
+    "exemplo": "const frase = `Olá, ${nome}!`;",
+    "usar_em": "Para concatenar textos com variáveis de forma limpa.",
+    "evitar": "Não é necessário para strings simples sem variáveis.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Template_literals"
+  },
+  {
+    "termo": "Ternary Operator",
+    "definicao": "Um atalho para escrever condicionais if/else em uma única linha.",
+    "exemplo": "const status = idade >= 18 ? 'Adulto' : 'Menor';",
+    "usar_em": "Atribuições simples baseadas em uma condição.",
+    "evitar": "Condições muito longas ou aninhadas (difícil de ler).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator"
+  },
+  {
+    "termo": "Modules (Import/Export)",
+    "definicao": "Sistema para dividir o código JavaScript em vários arquivos.",
+    "exemplo": "import { soma } from './matematica.js';",
+    "usar_em": "Para organizar projetos grandes e reutilizar código.",
+    "evitar": "Não funciona nativamente em arquivos locais sem um servidor.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Modules"
+  },
+  {
+    "termo": "Class",
+    "definicao": "Molde para criar objetos com propriedades e métodos (Orientação a Objetos).",
+    "exemplo": "class Pessoa { constructor(nome) { this.nome = nome; } }",
+    "usar_em": "Quando precisa criar muitos objetos com a mesma estrutura.",
+    "evitar": "Para lógicas simples onde funções comuns resolvem.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Classes"
+  },
+  {
+    "termo": "SetTimeout",
+    "definicao": "Função que executa um bloco de código após um tempo determinado.",
+    "exemplo": "setTimeout(() => alert('Oi'), 1000);",
+    "usar_em": "Atrasar uma execução ou criar animações simples.",
+    "evitar": "Não use para controlar a ordem exata de execução de códigos complexos.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/setTimeout"
+  },
+  {
+    "termo": "NaN",
+    "definicao": "Sigla para 'Not a Number'. Indica que um cálculo falhou.",
+    "exemplo": "Number('texto') // Retorna NaN",
+    "usar_em": "Verificar se uma entrada do usuário é válida.",
+    "evitar": "Não tente comparar NaN === NaN (dá false, use isNaN()).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/NaN"
+  },
+  {
+    "termo": "Typeof",
+    "definicao": "Operador que retorna o tipo de dado de uma variável.",
+    "exemplo": "typeof 42; // 'number'",
+    "usar_em": "Para depuração (debug) e validação de dados.",
+    "evitar": "Cuidado com arrays e null, ambos retornam 'object'.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/typeof"
+  },
+  {
+    "termo": "Box Model",
+    "definicao": "Conceito que diz que todo elemento HTML é uma caixa (margem, borda, padding, conteúdo).",
+    "exemplo": "box-sizing: border-box;",
+    "usar_em": "Fundamental para entender layouts em CSS.",
+    "evitar": "Ignorar isso causa problemas de tamanho nos elementos.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Learn/CSS/Building_blocks/The_box_model"
+  },
+  {
+    "termo": "Z-Index",
+    "definicao": "Propriedade CSS que controla a ordem de empilhamento (quem fica por cima).",
+    "exemplo": "z-index: 10; (Fica acima de quem tem z-index menor)",
+    "usar_em": "Menus flutuantes, modais e sobreposições.",
+    "evitar": "Funciona apenas em elementos com 'position' definido (ex: relative, absolute).",
+    "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/z-index"
+  },
+  {
+    "termo": "Semantic HTML",
+    "definicao": "Uso de tags que explicam o significado do conteúdo (header, nav, article).",
+    "exemplo": "Usar <button> em vez de <div class='btn'>.",
+    "usar_em": "Sempre. Melhora SEO e acessibilidade.",
+    "evitar": "O uso excessivo de <div> genéricas.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Semantics"
+  },
+  {
+    "termo": "Form",
+    "definicao": "Elemento HTML usado para coletar dados do usuário.",
+    "exemplo": "<form onsubmit='enviar()'>...</form>",
+    "usar_em": "Login, cadastro, busca.",
+    "evitar": "Não esqueça de prevenir o recarregamento da página em SPAs (e.preventDefault).",
+    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form"
+  },
+  {
+    "termo": "Input",
+    "definicao": "Campo interativo para o usuário digitar dados.",
+    "exemplo": "<input type='password'>",
+    "usar_em": "Receber texto, senhas, números ou datas.",
+    "evitar": "Não use sem uma label associada (ruim para acessibilidade).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/input"
+  },
+  {
+    "termo": "Canvas",
+    "definicao": "Elemento HTML usado para desenhar gráficos via JavaScript.",
+    "exemplo": "ctx.fillRect(10, 10, 150, 100);",
+    "usar_em": "Jogos 2D, visualização de dados e arte generativa.",
+    "evitar": "Para textos simples ou layouts (use HTML/CSS normal).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/Canvas_API"
+  },
+  {
+    "termo": "201 Created",
+    "definicao": "Status HTTP que indica que um recurso foi criado com sucesso.",
+    "exemplo": "Resposta após um cadastro bem sucedido.",
+    "usar_em": "Retorno de requisições POST.",
+    "evitar": "Usar 200 OK quando algo novo foi efetivamente criado no banco.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/201"
+  },
+  {
+    "termo": "400 Bad Request",
+    "definicao": "O servidor não entendeu a requisição pois ela está inválida.",
+    "exemplo": "O usuário esqueceu de preencher um campo obrigatório.",
+    "usar_em": "Quando o erro é culpa do cliente (dados errados).",
+    "evitar": "Não use se o erro for no servidor (use 500).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/400"
+  },
+  {
+    "termo": "HTTPS",
+    "definicao": "Versão segura do protocolo HTTP, que criptografa os dados.",
+    "exemplo": "O cadeado na barra de endereço do navegador.",
+    "usar_em": "Sempre. Hoje é padrão obrigatório para segurança.",
+    "evitar": "Trafegar dados sensíveis (senhas/cartões) via HTTP comum.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/HTTPS"
+  },
+  {
+    "termo": "CORS",
+    "definicao": "Mecanismo de segurança que bloqueia requisições entre sites diferentes.",
+    "exemplo": "Erro 'Access-Control-Allow-Origin' no console.",
+    "usar_em": "Configuração no servidor para permitir acesso à API.",
+    "evitar": "Não é um erro para 'consertar' no front-end, mas sim no back-end.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS"
+  },
+  {
+    "termo": "Cookie",
+    "definicao": "Pequeno dado salvo no navegador que é enviado ao servidor a cada requisição.",
+    "exemplo": "Usado para manter o usuário logado (sessão).",
+    "usar_em": "Autenticação e rastreamento.",
+    "evitar": "Não guarde muitos dados aqui (use LocalStorage).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies"
+  },
+  {
+    "termo": "Full Stack",
+    "definicao": "Desenvolvedor que trabalha tanto no Front-end quanto no Back-end.",
+    "exemplo": "Alguém que faz o site em React e o servidor em Node.js.",
+    "usar_em": "Descrição de vaga ou perfil profissional.",
+    "evitar": "Não tente aprender tudo de uma vez; foque em uma área primeiro.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Full-stack_development"
+  },
+  {
+    "termo": "Refactoring",
+    "definicao": "Processo de melhorar o código sem mudar o que ele faz.",
+    "exemplo": "Reescrever uma função grande em várias menores.",
+    "usar_em": "Para deixar o código mais limpo, legível e fácil de manter.",
+    "evitar": "Fazer refatoração sem ter testes (pode quebrar algo sem querer).",
+    "link": "https://developer.mozilla.org/en-US/docs/Glossary/Refactoring"
+  },
+  {
+    "termo": "JavaScript",
+    "definicao": "A linguagem de programação que roda no navegador e dá vida à web.",
+    "exemplo": "console.log('Eu controlo a web');",
+    "usar_em": "Front-end (interatividade), Back-end (Node.js), Apps Mobile (React Native).",
+    "evitar": "Cálculos matemáticos pesados ou processamento de baixo nível.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+  },
+  {
+    "termo": "Python",
+    "definicao": "Linguagem versátil conhecida por ser fácil de ler e aprender.",
+    "exemplo": "print('Hello World')",
+    "usar_em": "Ciência de Dados, Inteligência Artificial, Automação e Back-end.",
+    "evitar": "Desenvolvimento de aplicativos móveis nativos ou jogos 3D pesados.",
+    "link": "https://docs.python.org/pt-br/3/tutorial/"
+  },
+  {
+    "termo": "TypeScript",
+    "definicao": "É o JavaScript com 'superpoderes' (tipagem estática).",
+    "exemplo": "const numero: number = 10;",
+    "usar_em": "Projetos grandes onde a segurança e manutenção do código são cruciais.",
+    "evitar": "Projetos muito pequenos onde a configuração extra atrapalha.",
+    "link": "https://www.typescriptlang.org/docs/"
+  },
+  {
+    "termo": "Java",
+    "definicao": "Linguagem robusta orientada a objetos, famosa pelo lema 'escreva uma vez, rode em qualquer lugar'.",
+    "exemplo": "System.out.println('Java é clássico');",
+    "usar_em": "Sistemas corporativos grandes, aplicativos Android antigos e Big Data.",
+    "evitar": "Scripts simples ou startups que precisam de desenvolvimento muito rápido.",
+    "link": "https://dev.java/learn/"
+  },
+  {
+    "termo": "C#",
+    "definicao": "Linguagem da Microsoft, poderosa e muito usada em empresas e jogos.",
+    "exemplo": "Console.WriteLine('Hello .NET');",
+    "usar_em": "Desenvolvimento de Jogos (Unity), Apps Windows e Back-end (.NET).",
+    "evitar": "Se você busca um ambiente exclusivamente Linux (embora o .NET Core tenha mudado isso).",
+    "link": "https://learn.microsoft.com/pt-br/dotnet/csharp/"
+  },
+  {
+    "termo": "C++",
+    "definicao": "Linguagem de alto desempenho que dá controle total sobre o hardware.",
+    "exemplo": "std::cout << 'Performance máxima';",
+    "usar_em": "Jogos AAA (Unreal Engine), Sistemas Operacionais e softwares pesados.",
+    "evitar": "Desenvolvimento web simples ou scripts rápidos.",
+    "link": "https://devdocs.io/cpp/"
+  },
+  {
+    "termo": "PHP",
+    "definicao": "Linguagem de script feita para rodar no servidor e gerar HTML.",
+    "exemplo": "echo 'Eu domino o WordPress';",
+    "usar_em": "Blogs, e-commerces pequenos e sites baseados em WordPress.",
+    "evitar": "Aplicações em tempo real (chats, jogos online) ou Data Science.",
+    "link": "https://www.php.net/manual/en/index.php"
+  },
+  {
+    "termo": "SQL",
+    "definicao": "Linguagem padrão para conversar com bancos de dados relacionais.",
+    "exemplo": "SELECT * FROM usuarios WHERE ativo = true;",
+    "usar_em": "Para salvar, buscar e manipular dados em sistemas (MySQL, PostgreSQL).",
+    "evitar": "Não é uma linguagem de programação para criar lógicas de apps, serve só para dados.",
+    "link": "https://developer.mozilla.org/en-US/docs/Glossary/SQL"
+  },
+  {
+    "termo": "Go (Golang)",
+    "definicao": "Linguagem criada pelo Google focada em simplicidade e alta performance em rede.",
+    "exemplo": "fmt.Println('Go é rápido')",
+    "usar_em": "Serviços de nuvem (Cloud), Microserviços e ferramentas de infraestrutura.",
+    "evitar": "Interfaces gráficas (GUI) ou desenvolvimento mobile.",
+    "link": "https://go.dev/"
+  },
+  {
+    "termo": "Ruby",
+    "definicao": "Linguagem focada na felicidade do desenvolvedor e legibilidade.",
+    "exemplo": "puts 'Ruby é elegante'",
+    "usar_em": "Startups que querem lançar produtos rápido (usando Ruby on Rails).",
+    "evitar": "Aplicações onde a performance bruta é o fator mais crítico.",
+    "link": "https://www.ruby-lang.org/pt/"
+  },
+  {
+    "termo": "Swift",
+    "definicao": "Linguagem moderna da Apple para substituir o Objective-C.",
+    "exemplo": "print('Olá iPhone')",
+    "usar_em": "Aplicativos nativos para iOS, macOS, watchOS e tvOS.",
+    "evitar": "Se você não está desenvolvendo para o ecossistema Apple.",
+    "link": "https://www.swift.org/documentation/"
+  },
+  {
+    "termo": "Kotlin",
+    "definicao": "Linguagem moderna e concisa que roda na máquina virtual do Java.",
+    "exemplo": "println('O futuro do Android')",
+    "usar_em": "Aplicativos Android modernos e Back-end.",
+    "evitar": "Sistemas de baixo nível (drivers, kernels).",
+    "link": "https://kotlinlang.org/"
+  },
+    {
+    "termo": "Rust",
+    "definicao": "Linguagem focada em segurança de memória e performance extrema.",
+    "exemplo": "println!('Seguro e Rápido');",
+    "usar_em": "Sistemas críticos, Blockchain, WebAssembly e ferramentas de linha de comando.",
+    "evitar": "Prototipagem rápida, pois a curva de aprendizado é alta.",
+    "link": "https://www.rust-lang.org/pt-BR"
+  },
+  {
+    "termo": "Dart",
+    "definicao": "Linguagem criada pelo Google, otimizada para interfaces de usuário.",
+    "exemplo": "print('Olá Flutter');",
+    "usar_em": "Criar apps que rodam no iPhone e Android com o mesmo código (Flutter).",
+    "evitar": "Back-end pesado ou Data Science.",
+    "link": "https://dart.dev/"
+  },
+  {
+    "termo": "Markdown",
+    "definicao": "Linguagem de marcação leve para formatar texto.",
+    "exemplo": "**Negrito**, # Título, [Link](url)",
+    "usar_em": "Arquivos README no GitHub, documentação e anotações.",
+    "evitar": "Não serve para criar a estrutura de sites complexos (use HTML).",
+    "link": "https://www.markdownguide.org/"
+  },
+  {
+    "termo": "Docker",
+    "definicao": "Ferramenta que cria 'containers' para rodar aplicações de forma isolada.",
+    "exemplo": "docker run hello-world",
+    "usar_em": "Para garantir que o código rode igual na sua máquina e no servidor.",
+    "evitar": "Não é necessário para hospedar sites estáticos simples (apenas HTML/CSS).",
+    "link": "https://docs.docker.com/get-started/"
+  },
+  {
+    "termo": "CI/CD",
+    "definicao": "Prática de automatizar a integração e o deploy do código (Integração/Entrega Contínua).",
+    "exemplo": "GitHub Actions rodando testes automaticamente ao fazer um push.",
+    "usar_em": "Para evitar bugs em produção e acelerar entregas.",
+    "evitar": "Configurações complexas em projetos de estudo ou muito pequenos.",
+    "link": "https://www.atlassian.com/br/continuous-delivery"
+  },
+  {
+    "termo": "MVC",
+    "definicao": "Padrão de arquitetura que divide o app em Modelo (dados), Visão (tela) e Controlador (lógica).",
+    "exemplo": "O Laravel e Ruby on Rails usam MVC.",
+    "usar_em": "Para organizar o código de sistemas back-end robustos.",
+    "evitar": "Não force esse padrão em componentes front-end modernos (como React).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/MVC"
+  },
+  {
+    "termo": "REST",
+    "definicao": "Estilo de arquitetura para criar APIs que usam os métodos HTTP padrão.",
+    "exemplo": "GET /produtos (lista), POST /produtos (cria).",
+    "usar_em": "Criar serviços web simples e escaláveis.",
+    "evitar": "Não confundir com a biblioteca em si, é um conjunto de regras.",
+    "link": "https://restfulapi.net/"
+  },
+  {
+    "termo": "GraphQL",
+    "definicao": "Linguagem de consulta para APIs onde o cliente pede exatamente o que quer.",
+    "exemplo": "query { usuario { nome, email } }",
+    "usar_em": "Quando você precisa evitar buscar dados demais ou de menos (Over/Under fetching).",
+    "evitar": "APIs muito simples onde um REST padrão resolve mais fácil.",
+    "link": "https://graphql.org/"
+  },
+  {
+    "termo": "JWT",
+    "definicao": "JSON Web Token. Uma forma segura de transmitir informações entre partes como um objeto JSON.",
+    "exemplo": "Usado para manter o usuário logado sem precisar consultar o banco toda hora.",
+    "usar_em": "Autenticação em APIs e SPAs.",
+    "evitar": "Nunca guarde dados sensíveis (senhas) dentro do token, pois ele pode ser decodificado.",
+    "link": "https://jwt.io/"
+  },
+  {
+    "termo": "NoSQL",
+    "definicao": "Bancos de dados que não usam tabelas relacionais (SQL), mas sim documentos ou grafos.",
+    "exemplo": "MongoDB, Firebase, Cassandra.",
+    "usar_em": "Dados não estruturados, Big Data ou desenvolvimento rápido.",
+    "evitar": "Sistemas financeiros complexos onde a integridade relacional é crítica.",
+    "link": "https://www.mongodb.com/pt-br/nosql-explained"
+  },
+  {
+    "termo": "SPA",
+    "definicao": "Single Page Application. Sites que não recarregam a página inteira ao navegar.",
+    "exemplo": "Gmail, Trello e o próprio DevPocket.",
+    "usar_em": "Para criar uma experiência de usuário fluida, parecida com app nativo.",
+    "evitar": "Se o SEO (aparecer no Google) for a prioridade máxima e você não souber configurar SSR.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/SPA"
+  },
+  {
+    "termo": "Agile",
+    "definicao": "Metodologia de gerenciamento de projetos focada em entregas rápidas e contínuas.",
+    "exemplo": "Scrum e Kanban são métodos ágeis.",
+    "usar_em": "Trabalho em equipe para se adaptar a mudanças rapidamente.",
+    "evitar": "Não é uma desculpa para não ter documentação ou planejamento.",
+    "link": "https://www.atlassian.com/br/agile"
+  },
+  {
+    "termo": "MVP",
+    "definicao": "Produto Viável Mínimo. A versão mais simples de um produto para testar se ele funciona.",
+    "exemplo": "Lançar o site só com a busca antes de fazer o sistema de login.",
+    "usar_em": "Validar ideias de startups ou projetos pessoais.",
+    "evitar": "Não confunda 'mínimo' com 'mal feito' ou 'com bugs'.",
+    "link": "https://en.wikipedia.org/wiki/Minimum_viable_product"
+  },
+  {
+    "termo": "Algoritmo",
+    "definicao": "Uma sequência de instruções passo a passo para resolver um problema.",
+    "exemplo": "Receita de bolo ou instruções de GPS.",
+    "usar_em": "Tudo na programação é baseado em algoritmos.",
+    "evitar": "Tentar decorar código sem entender a lógica (o algoritmo) por trás.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Algorithm"
+  },
+  {
+    "termo": "Cache",
+    "definicao": "Camada de armazenamento temporário de alta velocidade.",
+    "exemplo": "O navegador salvando imagens para não baixar de novo.",
+    "usar_em": "Melhorar a performance e velocidade de carregamento.",
+    "evitar": "Cuidado com cache antigo mostrando informações desatualizadas ao usuário.",
+    "link": "https://www.cloudflare.com/pt-br/learning/cdn/what-is-caching/"
+  },
+  {
+    "termo": "Open Source",
+    "definicao": "Software cujo código-fonte está disponível para qualquer um ver, modificar e distribuir.",
+    "exemplo": "Linux, React, VS Code.",
+    "usar_em": "Estudar código de outros e contribuir para a comunidade.",
+    "evitar": "Usar em projetos proprietários sem ler a licença de uso.",
+    "link": "https://opensource.org/"
+  },
+  {
+    "termo": "SQL Injection",
+    "definicao": "Falha de segurança onde o invasor insere comandos SQL maliciosos em campos de entrada.",
+    "exemplo": "Digitar código no campo de login para apagar o banco de dados.",
+    "usar_em": "Nunca 'use'. Aprenda para se proteger.",
+    "evitar": "Concatenar strings direto nas consultas do banco (use Prepared Statements).",
+    "link": "https://owasp.org/www-community/attacks/SQL_Injection"
+  },
+  {
+    "termo": "XSS",
+    "definicao": "Cross-Site Scripting. Injetar scripts maliciosos em sites confiáveis.",
+    "exemplo": "Um comentário em um blog que executa um JS roubando cookies de quem lê.",
+    "usar_em": "Conhecer para proteger seus formulários.",
+    "evitar": "Exibir texto enviado pelo usuário sem 'sanitizar' (limpar) o HTML antes.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Cross-site_scripting"
+  },
+  {
+    "termo": "CSS Variables",
+    "definicao": "Entidades personalizadas para armazenar valores CSS reutilizáveis.",
+    "exemplo": ":root { --cor-principal: #00ff41; }",
+    "usar_em": "Temas (Dark/Light mode) e manter consistência de cores.",
+    "evitar": "Nomes de variáveis confusos como '--cor1', '--valor2'.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Using_CSS_custom_properties"
+  },
+  {
+    "termo": "Media Query",
+    "definicao": "Recurso do CSS para aplicar estilos baseados no tamanho da tela ou dispositivo.",
+    "exemplo": "@media (max-width: 600px) { ... }",
+    "usar_em": "Tornar sites responsivos (adaptáveis a celulares).",
+    "evitar": "Criar breakpoints para cada modelo de celular específico (use faixas gerais).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_media_queries/Using_media_queries"
+  },
+  {
+    "termo": "Pseudoclass",
+    "definicao": "Palavra-chave no CSS que seleciona um elemento baseado em seu estado.",
+    "exemplo": "button:hover (quando passa o mouse).",
+    "usar_em": "Dar feedback visual ao usuário.",
+    "evitar": "Usar :hover em elementos importantes para mobile (não existe mouse no celular).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Pseudo-classes"
+  },
+  {
+    "termo": "Hoisting",
+    "definicao": "Comportamento do JS de mover declarações para o topo do escopo antes de executar.",
+    "exemplo": "Chamar uma função antes da linha onde ela foi escrita.",
+    "usar_em": "Conceito teórico importante para entrevistas.",
+    "evitar": "Confiar nisso para escrever código desorganizado.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Hoisting"
+  },
+  {
+    "termo": "Recursion",
+    "definicao": "Quando uma função chama a si mesma para resolver um problema.",
+    "exemplo": "Cálculo de Fatorial ou navegar em pastas dentro de pastas.",
+    "usar_em": "Problemas que podem ser divididos em subproblemas iguais.",
+    "evitar": "Se não tiver uma condição de parada, cria um loop infinito (Stack Overflow).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Recursion"
+  },
+  {
+    "termo": "Branch",
+    "definicao": "Uma ramificação independente no Git para trabalhar sem afetar o código principal.",
+    "exemplo": "git checkout -b nova-funcionalidade",
+    "usar_em": "Sempre que for criar uma nova feature ou corrigir um bug.",
+    "evitar": "Trabalhar direto na 'main' ou 'master' em equipes.",
+    "link": "https://www.atlassian.com/br/git/tutorials/using-branches"
+  },
+  {
+    "termo": "Pull Request",
+    "definicao": "Pedido para mesclar suas alterações (branch) no código principal.",
+    "exemplo": "Abrir um PR no GitHub para revisão.",
+    "usar_em": "Colaboração em equipe e Code Review.",
+    "evitar": "Enviar PRs gigantescos que são difíceis de revisar.",
+    "link": "https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+  },
+  {
+    "termo": "Merge Conflict",
+    "definicao": "Quando o Git não sabe qual código manter porque duas pessoas mexeram na mesma linha.",
+    "exemplo": "<<<<<<< HEAD (Ocorre ao tentar unir branches)",
+    "usar_em": "É um erro para ser resolvido manualmente.",
+    "evitar": "Ficar muito tempo sem atualizar sua branch com a main.",
+    "link": "https://www.atlassian.com/br/git/tutorials/using-branches/merge-conflicts"
+  },
+  {
+    "termo": "Component",
+    "definicao": "Pedacinho isolado de interface que pode ser reutilizado (comum em React/Vue).",
+    "exemplo": "<Botao texto='Clique' />",
+    "usar_em": "Construir interfaces modulares (Header, Footer, Card).",
+    "evitar": "Criar componentes gigantes que fazem tudo (God Component).",
+    "link": "https://react.dev/learn/your-first-component"
+  },
+  {
+    "termo": "State (Estado)",
+    "definicao": "Dados que mudam ao longo do tempo em uma aplicação e afetam a interface.",
+    "exemplo": "Um contador que aumenta quando clica (0 -> 1).",
+    "usar_em": "Gerenciar interatividade em frameworks modernos.",
+    "evitar": "Colocar dados estáticos (que nunca mudam) no estado.",
+    "link": "https://react.dev/learn/state-a-components-memory"
+  },
+  {
+    "termo": "Props",
+    "definicao": "Informações passadas de um componente pai para um filho (propriedades).",
+    "exemplo": "<Card titulo='Notícia 1' />",
+    "usar_em": "Tornar componentes dinâmicos e reutilizáveis.",
+    "evitar": "Tentar alterar as props dentro do componente filho (elas são somente leitura).",
+    "link": "https://react.dev/learn/passing-props-to-a-component"
+  },
+  {
+    "termo": "Hooks",
+    "definicao": "Funções que permitem 'ligar' recursos de estado e ciclo de vida em componentes funcionais.",
+    "exemplo": "useState, useEffect (no React).",
+    "usar_em": "Gerenciar lógica em componentes modernos.",
+    "evitar": "Usar dentro de loops ou condicionais (quebra as regras dos Hooks).",
+    "link": "https://react.dev/reference/react"
+  },
+  {
+    "termo": "Virtual DOM",
+    "definicao": "Uma cópia leve do DOM mantida em memória para otimizar atualizações.",
+    "exemplo": "O React usa isso para mudar só o que precisa na tela.",
+    "usar_em": "Bibliotecas como React e Vue (funciona 'por baixo dos panos').",
+    "evitar": "Manipular o DOM real manualmente quando estiver usando Virtual DOM.",
+    "link": "https://legacy.reactjs.org/docs/faq-internals.html"
+  },
+  {
+    "termo": "WebSockets",
+    "definicao": "Tecnologia que mantém uma conexão aberta para troca de dados em tempo real.",
+    "exemplo": "Chats, Jogos Online, Apps de Monitoramento.",
+    "usar_em": "Quando o servidor precisa enviar dados sem o cliente pedir.",
+    "evitar": "Blogs ou sites de notícias (use HTTP padrão).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/WebSockets_API"
+  },
+  {
+    "termo": "Localhost",
+    "definicao": "Endereço que aponta para o seu próprio computador.",
+    "exemplo": "http://localhost:3000",
+    "usar_em": "Desenvolvimento e testes locais.",
+    "evitar": "Achar que enviar esse link para um amigo vai funcionar (ele não tem acesso ao seu PC).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Localhost"
+  },
+  {
+    "termo": "DNS",
+    "definicao": "Sistema que traduz nomes de sites (google.com) para endereços IP.",
+    "exemplo": "A 'agenda telefônica' da internet.",
+    "usar_em": "Configuração de domínios.",
+    "evitar": "Não é algo que se 'programa', mas que se configura.",
+    "link": "https://www.cloudflare.com/pt-br/learning/dns/what-is-dns/"
+  },
+  {
+    "termo": "CDN",
+    "definicao": "Rede de servidores espalhados pelo mundo para entregar conteúdo mais rápido.",
+    "exemplo": "Cloudflare, AWS CloudFront.",
+    "usar_em": "Hospedar imagens, vídeos e bibliotecas JS.",
+    "evitar": "Hospedar arquivos pesados no seu próprio servidor simples.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/CDN"
+  },
+  {
+    "termo": "SEO",
+    "definicao": "Otimização para Motores de Busca. Técnicas para aparecer melhor no Google.",
+    "exemplo": "Usar meta tags e HTML semântico.",
+    "usar_em": "Qualquer site público que precisa ser encontrado.",
+    "evitar": "Técnicas de 'Black Hat' (enganar o Google), pois gera punição.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/SEO"
+  },
+  {
+    "termo": "Linter",
+    "definicao": "Ferramenta que analisa o código para encontrar erros e problemas de estilo.",
+    "exemplo": "ESLint, Prettier.",
+    "usar_em": "Manter o código padronizado em equipe.",
+    "evitar": "Ignorar os avisos do linter (eles existem por um motivo).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Lint"
+  },
+  {
+    "termo": "Boilerplate",
+    "definicao": "Código padrão ou modelo inicial para começar um projeto rapidamente.",
+    "exemplo": "Create React App, HTML5 Boilerplate.",
+    "usar_em": "Evitar configurar tudo do zero toda vez.",
+    "evitar": "Usar boilerplates complexos demais para projetos simples.",
+    "link": "https://en.wikipedia.org/wiki/Boilerplate_code"
+  },
+  {
+    "termo": "Deprecated",
+    "definicao": "Recurso que foi descontinuado e não deve mais ser usado.",
+    "exemplo": "A tag <marquee> do HTML.",
+    "usar_em": "Nunca use. Apenas saiba que existe para identificar código legado.",
+    "evitar": "Usar funções marcadas como deprecated (elas podem sumir futuramente).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Deprecated"
+  },
+  {
+    "termo": "Unit Testing",
+    "definicao": "Testes automatizados que verificam pequenas partes (unidades) do código.",
+    "exemplo": "Testar se a função somar(2,2) retorna 4.",
+    "usar_em": "Garantir que mudanças novas não quebrem o que já funcionava.",
+    "evitar": "Tentar testar o sistema inteiro de uma vez (use testes de integração).",
+    "link": "https://en.wikipedia.org/wiki/Unit_testing"
+  },
+  {
+    "termo": "TDD",
+    "definicao": "Desenvolvimento Orientado a Testes. Escrever o teste antes do código.",
+    "exemplo": "Red (Falha) -> Green (Passa) -> Refactor (Melhora).",
+    "usar_em": "Criar código mais confiável e planejado.",
+    "evitar": "Pode ser lento no início para quem não está acostumado.",
+    "link": "https://www.redhat.com/pt-br/topics/devops/what-is-test-driven-development"
+  },
+  {
+    "termo": "Serverless",
+    "definicao": "Modelo onde você escreve código sem se preocupar em gerenciar servidores.",
+    "exemplo": "AWS Lambda, Vercel Functions.",
+    "usar_em": "Microserviços e tarefas pontuais.",
+    "evitar": "Processos de longa duração (costumam ter limite de tempo de execução).",
+    "link": "https://www.redhat.com/pt-br/topics/cloud-native-apps/what-is-serverless"
+  },
+  {
+    "termo": "Polyfill",
+    "definicao": "Código que implementa recursos modernos em navegadores antigos.",
+    "exemplo": "Fazer o Array.map() funcionar no Internet Explorer 8.",
+    "usar_em": "Dar suporte a navegadores velhos.",
+    "evitar": "Carregar polyfills desnecessários em navegadores modernos (pesa o site).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Glossary/Polyfill"
+  },
+    {
+    "termo": "Closure",
+    "definicao": "Quando uma função 'lembra' do ambiente onde foi criada, mesmo sendo executada fora dele.",
+    "exemplo": "function criarContador() { let i=0; return () => i++; }",
+    "usar_em": "Criar variáveis privadas e fábricas de funções.",
+    "evitar": "Pode causar vazamento de memória se não gerenciado corretamente.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Closures"
+  },
+  {
+    "termo": "Event Loop",
+    "definicao": "O mecanismo que permite o JavaScript (single-threaded) realizar operações não bloqueantes.",
+    "exemplo": "Por isso o setTimeout(..., 0) executa só depois do código síncrono.",
+    "usar_em": "Entender por que seu código não executa na ordem que você lê.",
+    "evitar": "Bloquear a Call Stack com loops pesados (trava a tela).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/EventLoop"
+  },
+  {
+    "termo": "SSR (Server-Side Rendering)",
+    "definicao": "Renderizar o HTML da página no servidor antes de enviar ao navegador.",
+    "exemplo": "Next.js e Nuxt.js fazem isso por padrão.",
+    "usar_em": "Melhorar SEO e o tempo de carregamento inicial (FCP).",
+    "evitar": "Quando a interatividade é complexa e o servidor é lento.",
+    "link": "https://nextjs.org/docs/pages/building-your-application/rendering/server-side-rendering"
+  },
+  {
+    "termo": "SSG (Static Site Generation)",
+    "definicao": "Gerar todas as páginas HTML no momento do build (compilação), não na requisição.",
+    "exemplo": "Blogs, documentações e landing pages.",
+    "usar_em": "Sites que mudam pouco e precisam ser ultra-rápidos.",
+    "evitar": "Sites com conteúdo em tempo real ou personalizado por usuário.",
+    "link": "https://www.gatsbyjs.com/docs/glossary/static-site-generator/"
+  },
+  {
+    "termo": "Hydration",
+    "definicao": "Processo onde o JS 'acorda' uma página HTML estática vinda do servidor, tornando-a interativa.",
+    "exemplo": "O botão aparece rápido (HTML), mas só clica depois da hidratação (JS).",
+    "usar_em": "Frameworks SSR como Next.js/React.",
+    "evitar": "Enviar JS demais, causando demora para a página ficar interativa (TTI).",
+    "link": "https://react.dev/reference/react-dom/client/hydrateRoot"
+  },
+  {
+    "termo": "Microservices",
+    "definicao": "Arquitetura onde o sistema é dividido em pequenos serviços independentes.",
+    "exemplo": "Um serviço só para pagamentos, outro só para autenticação.",
+    "usar_em": "Sistemas gigantes com times grandes e tecnologias diversas.",
+    "evitar": "Overengineering em projetos pequenos (comece com Monolito).",
+    "link": "https://aws.amazon.com/pt/microservices/"
+  },
+  {
+    "termo": "Monorepo",
+    "definicao": "Estratégia de manter múltiplos projetos (front, back, mobile) no mesmo repositório Git.",
+    "exemplo": "Turborepo, Nx, Lerna.",
+    "usar_em": "Compartilhar código (ex: tipos, configs) entre projetos.",
+    "evitar": "Sem ferramentas adequadas, o tempo de build/clone fica insuportável.",
+    "link": "https://monorepo.tools/"
+  },
+  {
+    "termo": "SOLID",
+    "definicao": "Acrônimo para 5 princípios de design de software orientado a objetos.",
+    "exemplo": "S = Single Responsibility (Uma classe deve ter apenas uma responsabilidade).",
+    "usar_em": "Escrever código limpo, testável e manutenível no back-end.",
+    "evitar": "Aplicar dogmaticamente em scripts simples ou código puramente funcional.",
+    "link": "https://en.wikipedia.org/wiki/SOLID"
+  },
+  {
+    "termo": "DRY (Don't Repeat Yourself)",
+    "definicao": "Princípio que diz para evitar duplicação de lógica.",
+    "exemplo": "Extrair código repetido para uma função auxiliar.",
+    "usar_em": "Sempre que ver Copiar/Colar no seu código.",
+    "evitar": "Abstração prematura (às vezes repetir é melhor que acoplar errado).",
+    "link": "https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"
+  },
+  {
+    "termo": "KISS (Keep It Simple, Stupid)",
+    "definicao": "O código deve ser o mais simples possível.",
+    "exemplo": "Não use uma biblioteca de IA para somar dois números.",
+    "usar_em": "Tomada de decisões técnicas.",
+    "evitar": "Confundir 'simples' com 'simplista' (que ignora casos de borda).",
+    "link": "https://en.wikipedia.org/wiki/KISS_principle"
+  },
+  {
+    "termo": "Immutability",
+    "definicao": "Conceito onde dados não são alterados, mas sim substituídos por novas cópias.",
+    "exemplo": "const novoArray = [...antigo, item]; (em vez de push)",
+    "usar_em": "React, Redux e programação funcional para evitar bugs de estado.",
+    "evitar": "Pode consumir mais memória se não usar estruturas compartilhadas.",
+    "link": "https://developer.mozilla.org/en-US/docs/Glossary/Immutable"
+  },
+  {
+    "termo": "Memoization",
+    "definicao": "Técnica de otimização que armazena resultados de funções pesadas para não recalcular.",
+    "exemplo": "useMemo no React ou bibliotecas como Lodash.memoize.",
+    "usar_em": "Cálculos caros que são chamados repetidamente com os mesmos inputs.",
+    "evitar": "Otimizar prematuramente funções leves (o custo da memória não compensa).",
+    "link": "https://en.wikipedia.org/wiki/Memoization"
+  },
+  {
+    "termo": "Tree Shaking",
+    "definicao": "Processo de remover código morto (não usado) do bundle final.",
+    "exemplo": "Importar só { Button } em vez da lib inteira reduz o peso.",
+    "usar_em": "Otimização de performance em produção.",
+    "evitar": "Bibliotecas antigas (CommonJS) que não suportam bem essa técnica.",
+    "link": "https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking"
+  },
+  {
+    "termo": "Bundler",
+    "definicao": "Ferramenta que empacota todo seu JS, CSS e imagens em arquivos prontos para o navegador.",
+    "exemplo": "Vite, Webpack, Parcel.",
+    "usar_em": "Qualquer projeto front-end moderno.",
+    "evitar": "Configurar Webpack do zero se você pode usar Vite ou Next.js.",
+    "link": "https://vitejs.dev/guide/why.html"
+  },
+  {
+    "termo": "Tailwind CSS",
+    "definicao": "Framework CSS 'Utility-First' onde você estiliza direto nas classes do HTML.",
+    "exemplo": "<div class='bg-blue-500 text-white p-4'>",
+    "usar_em": "Desenvolvimento rápido e padronizado.",
+    "evitar": "Se você odeia HTML poluído com muitas classes.",
+    "link": "https://tailwindcss.com/"
+  },
+  {
+    "termo": "WebAssembly (Wasm)",
+    "definicao": "Formato binário que permite rodar código de alta performance (C++, Rust) no navegador.",
+    "exemplo": "Figma e Google Earth rodam no navegador graças ao Wasm.",
+    "usar_em": "Edição de vídeo, jogos pesados, criptografia.",
+    "evitar": "Substituir JS em tarefas simples de DOM (JS é mais rápido nisso).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/WebAssembly"
+  },
+  {
+    "termo": "PWA (Progressive Web App)",
+    "definicao": "Sites que se comportam como apps nativos (instalam, funcionam offline).",
+    "exemplo": "Twitter Lite, Starbucks App.",
+    "usar_em": "Oferecer experiência de app sem precisar das lojas (App Store/Play Store).",
+    "evitar": "Se precisar de acesso profundo ao hardware (ex: bluetooth complexo em iOS).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/Progressive_web_apps"
+  },
+  {
+    "termo": "Service Worker",
+    "definicao": "Script que roda em segundo plano, separado da página web.",
+    "exemplo": "Interceptar requisições para carregar o site offline.",
+    "usar_em": "Cache avançado, Push Notifications, Background Sync.",
+    "evitar": "Pode ser difícil de debugar o cache (usuário vendo versão velha).",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/Service_Worker_API"
+  },
+  {
+    "termo": "OAuth",
+    "definicao": "Padrão aberto para autorização de acesso (Login com Google/Facebook).",
+    "exemplo": "Botão 'Entrar com Google'.",
+    "usar_em": "Não querer gerenciar senhas e segurança no seu banco.",
+    "evitar": "Implementar seu próprio protocolo de segurança do zero.",
+    "link": "https://oauth.net/2/"
+  },
+  {
+    "termo": "CSRF",
+    "definicao": "Ataque onde um site malicioso engana o navegador para executar ações em outro site onde o usuário está logado.",
+    "exemplo": "Um link oculto que posta algo no seu Facebook sem você ver.",
+    "usar_em": "Use Tokens CSRF para prevenir isso.",
+    "evitar": "Confiar apenas em Cookies para autenticação sem proteções extras.",
+    "link": "https://owasp.org/www-community/attacks/csrf"
+  },
+  {
+    "termo": "Webhook",
+    "definicao": "Forma de um app enviar dados automáticos para outro quando algo acontece (Push reverso).",
+    "exemplo": "Stripe avisa seu servidor que o pagamento foi aprovado.",
+    "usar_em": "Integrações entre sistemas (Slack, Discord, Pagamentos).",
+    "evitar": "Não validar a origem da requisição (segurança).",
+    "link": "https://docs.github.com/pt/webhooks"
+  },
+  {
+    "termo": "Kubernetes (K8s)",
+    "definicao": "Sistema para orquestrar (gerenciar) containers Docker em escala.",
+    "exemplo": "O Google usa para gerenciar seus bilhões de containers.",
+    "usar_em": "Infraestrutura complexa com muitos microserviços.",
+    "evitar": "Overkill total para hospedar um site simples ou API pequena.",
+    "link": "https://kubernetes.io/pt/"
+  },
+  {
+    "termo": "Redis",
+    "definicao": "Banco de dados em memória, extremamente rápido.",
+    "exemplo": "Salvar sessões de usuário ou cache de consultas lentas.",
+    "usar_em": "Quando performance de leitura é crítica.",
+    "evitar": "Usar como único banco de dados persistente (se a RAM acabar, perde dados).",
+    "link": "https://redis.io/"
+  },
+  {
+    "termo": "Headless CMS",
+    "definicao": "Gerenciador de conteúdo que só fornece dados via API (sem front-end acoplado).",
+    "exemplo": "Contentful, Strapi, Sanity.",
+    "usar_em": "Quando você quer usar React/Vue para exibir o conteúdo do blog.",
+    "evitar": "Se o time de marketing precisa de 'drag-and-drop' visual da página inteira (Wix/Wordpress).",
+    "link": "https://jamstack.org/headless-cms/"
+  },
+  {
+    "termo": "Jamstack",
+    "definicao": "Arquitetura baseada em Javascript, APIs e Markup (HTML pré-renderizado).",
+    "exemplo": "Sites estáticos hospedados em CDN com funções dinâmicas.",
+    "usar_em": "Segurança, escala barata e performance.",
+    "evitar": "Aplicações que dependem 100% de lógica no servidor a cada clique.",
+    "link": "https://jamstack.org/"
+  },
+  {
+    "termo": "Shadow DOM",
+    "definicao": "Técnica para encapsular HTML e CSS, impedindo que estilos globais afetem o componente.",
+    "exemplo": "A tag <video> do navegador usa isso internamente.",
+    "usar_em": "Web Components e Micro-frontends.",
+    "evitar": "Dificulta estilizar o componente externamente se não for planejado.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/API/Web_components/Using_shadow_DOM"
+  },
+  {
+    "termo": "Strict Mode",
+    "definicao": "Modo do JavaScript que proíbe sintaxes ruins e lança mais erros.",
+    "exemplo": "'use strict'; x = 3.14; // Erro, x não foi declarado.",
+    "usar_em": "Sempre. Módulos ES6 e Classes já usam por padrão.",
+    "evitar": "Código legado muito antigo que pode quebrar.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Strict_mode"
+  },
+  {
+    "termo": "Transpiler",
+    "definicao": "Ferramenta que traduz código de uma linguagem para outra (ou versão antiga).",
+    "exemplo": "Babel transforma JS moderno em JS compatível com IE11.",
+    "usar_em": "Garantir compatibilidade com navegadores velhos.",
+    "evitar": "Configurações complexas manuais (hoje os frameworks já resolvem isso).",
+    "link": "https://babeljs.io/"
+  },
+  {
+    "termo": "Event Bubbling",
+    "definicao": "Comportamento onde um evento (clique) no filho 'sobe' para os pais no HTML.",
+    "exemplo": "Clicar num botão dentro de uma Div dispara o onclick da Div também.",
+    "usar_em": "Event Delegation (colocar um listener no pai para ouvir vários filhos).",
+    "evitar": "Esquecer de usar e.stopPropagation() quando não quiser esse efeito.",
+    "link": "https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling"
+  },
+  {
+    "termo": "Currying",
+    "definicao": "Transformar uma função com vários argumentos em uma sequência de funções.",
+    "exemplo": "soma(a)(b) em vez de soma(a, b).",
+    "usar_em": "Programação funcional e composição de funções.",
+    "evitar": "Uso excessivo torna o código difícil de ler para iniciantes.",
+    "link": "https://javascript.info/currying-partials"
+  }
+]
