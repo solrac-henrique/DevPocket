@@ -8,79 +8,70 @@
     <title>DevPocket</title>
 </head>
 
-    <canvas id="matrix-rain"></canvas>
-<script src="script.js"></script>
-
 <body>
+
+    <!-- Tela de Boot -->
+    <div id="boot-screen">
+        <p>> Iniciando DevPocket v1.0...</p>
+        <p>> Carregando módulos... [OK]</p>
+        <p>> Estabelecendo conexão... [OK]</p>
+        <p>> Bem-vindo, Neo.</p>
+    </div>
+
+    <!-- Canvas Matrix Rain -->
+    <canvas id="matrix-rain"></canvas>
+
+    <!-- Som de tecla -->
+    <audio id="tecla-som" preload="auto">
+        <source src="https://www.soundjay.com/mechanical/sounds/typewriter-key-1.mp3" type="audio/mpeg">
+    </audio>
+
     <header>
         <h1>DevPocket 1.0</h1>
         <div>
             <input type="text" placeholder="Digite um termo...">
-
-            <!-- Botão Buscar -->
             <button id="botao-busca" onclick="iniciarBusca()">BUSCAR</button>
-
-            <!-- Botão Random (?) -->
             <button id="botao-random" onclick="buscaAleatoria()" title="Termo Aleatório">R</button>
-
-            <!-- Botão Sobre (i) -->
             <button id="btn-sobre" onclick="abrirModal()" title="Sobre o Projeto">I</button>
         </div>
     </header>
-    <!-- Container da notificação flutuante -->
+
     <div id="toast-notification" class="toast-hidden">
         <span class="icon">💾</span>
         <span id="toast-msg">DADOS COPIADOS</span>
     </div>
+
     <main>
         <section class="card-container">
-            <!-- <article class="card">
-                <h2>JavaScript</h2>
-                <p>1995</p>
-                <p>JavaScript é uma linguagem de programação</p>
-                <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">Saiba mais</a>
-            </article> -->
         </section>
         <button id="btn-topo" onclick="subirTela()">⬆</button>
     </main>
-    <footer>
-        <footer class="footer">
-            <ul class="footer-links">
-                <li>
-                    <a target="_blank" href="https://github.com/solrac-henrique">GitHub</a>
-                </li>
-            </ul>
-            </p>
-        </footer>
-        <!-- Estrutura da Janela Modal -->
-        <div id="modal-sobre" class="modal-overlay">
-            <div class="modal-box">
-                <h2 class="modal-title">>> SYSTEM_INFO</h2>
 
-                <div class="modal-content">
-                    <p><strong>PROJETO:</strong> DevPocket v1.0</p>
-                    <p><strong>DEV:</strong> <a class="Carlos Henrique Martins" target="_blank" href="https://github.com/solrac-henrique">Carlos Henrique Martins</a></p>
-                    <p><strong>STATUS:</strong> Operacional.. quase</p>
-                    <br>
-                    <h2 class="modal-title">>> O QUE EU SOU?</h2>
-                    <p>Eu sou o DevPocket — um guia descomplicado, quase como um amigo que traduz o universo da programação em palavras claras. Fui criado pelo Carlos Henrique Martins. Nasci naquele ritmo de quem está aprendendo, errando, descobrindo… e continuo aqui justamente para isso: caminhar com você e apender junto de você. :p</p>
-                </div>
+    <footer class="footer">
+        <ul class="footer-links">
+            <li>
+                <a target="_blank" href="https://github.com/solrac-henrique">GitHub</a>
+            </li>
+        </ul>
+    </footer>
 
-                <button class="modal-close" onclick="fecharModal()">[ X ] FECHAR</button>
+    <!-- Modal Sobre -->
+    <div id="modal-sobre" class="modal-overlay">
+        <div class="modal-box">
+            <h2 class="modal-title">>> SYSTEM_INFO</h2>
+            <div class="modal-content">
+                <p><strong>PROJETO:</strong> DevPocket v1.0</p>
+                <p><strong>DEV:</strong> <a class="Carlos Henrique Martins" target="_blank" href="https://github.com/solrac-henrique">Carlos Henrique Martins</a></p>
+                <p><strong>STATUS:</strong> Operacional.. quase</p>
+                <br>
+                <h2 class="modal-title">>> O QUE EU SOU?</h2>
+                <p>Eu sou o DevPocket — um guia descomplicado, quase como um amigo que traduz o universo da programação em palavras claras. Fui criado pelo Carlos Henrique Martins. Nasci naquele ritmo de quem está aprendendo, errando, descobrindo… e continuo aqui justamente para isso: caminhar com você e aprender junto de você. :p</p>
             </div>
+            <button class="modal-close" onclick="fecharModal()">[ X ] FECHAR</button>
         </div>
-        <script src="script.js"></script>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
-    <canvas id="matrix-rain"></canvas>
-    <div id="boot-screen">
-  <p>> Iniciando DevPocket v1.0...</p>
-  <p>> Carregando módulos... [OK]</p>
-  <p>> Estabelecendo conexão... [OK]</p>
-  <p>> Bem-vindo, Neo.</p>
-</div>
-    <audio id="tecla-som" preload="auto">
-  <source src="https://www.soundjay.com/mechanical/sounds/typewriter-key-1.mp3" type="audio/mpeg">
-</audio>
-    
 </html>
