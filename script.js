@@ -1,3 +1,16 @@
+/* --- TELA DE BOOT: garante que ela sempre desapareça --- */
+// O CSS já tenta esconder a tela de boot com uma animação (fadeOut).
+// Mas se o usuário tiver "reduzir movimento" ativado no sistema, ou se a
+// animação falhar por qualquer motivo, essa div com z-index:999 cobre
+// a tela inteira para sempre. Este código força a remoção via JS depois
+// de um tempo, como uma garantia que não depende do CSS funcionar.
+const bootScreen = document.getElementById('boot-screen');
+if (bootScreen) {
+    setTimeout(() => {
+        bootScreen.style.display = 'none';
+    }, 4000); // um pouco depois do fadeOut do CSS (3s) terminar
+}
+
 let cardContainer = document.querySelector(".card-container");
 let campoBusca = document.querySelector("header input");
 
