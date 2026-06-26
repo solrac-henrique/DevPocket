@@ -716,6 +716,23 @@ article a:hover {
   to { opacity: 0; visibility: hidden; }
 }
 
+/* Se o usuário tem "reduzir movimento" ativado no sistema (configuração
+   de acessibilidade comum em iOS/Android/Windows), o navegador costuma
+   ignorar ou pular animações CSS. Sem isso, a tela de boot (#boot-screen)
+   ficaria parada na tela para sempre, cobrindo todo o site — já que ela
+   só desaparece através da animação fadeOut. Aqui garantimos que, nesse
+   caso, ela já comece escondida. */
+@media (prefers-reduced-motion: reduce) {
+    #boot-screen {
+        animation: none;
+        display: none;
+    }
+    #boot-screen p {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 #matrix-rain {
   position: fixed;
   top: 0;
