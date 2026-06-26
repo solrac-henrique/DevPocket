@@ -1,0 +1,680 @@
+/* fontes Retro: VT323 (Títulos) e Fira Code (Código/Texto) */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=VT323&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00ff41; /* Verde Terminal */
+    --secondary-color: #e0e0e0; /* Branco sujo */
+    --tertiary-color: #008f11; /* Verde escuro para detalhes */
+    --bg-color: #0d1117; /* Preto fundo */
+    --card-bg: #161b22; /* Cinza muito escuro para cards */
+    --shadow-color: #003b00; /* Sombra dura */
+    --glow: 0 0 10px rgba(0, 255, 65, 0.4); /* Efeito de brilho */
+}
+
+/* Efeito de Scanline (Linhas de TV antiga) na tela inteira */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 999;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    font-family: 'Fira Code', monospace;
+    letter-spacing: -0.5px;
+    overflow-x: hidden;
+}
+
+/* Scrollbar Personalizada Retro */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-left: 1px solid var(--tertiary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--tertiary-color);
+    border: 1px solid var(--primary-color);
+}
+
+header {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column; /* Garante organização em telas menores */
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    background: rgba(13, 17, 23, 0.95);
+    z-index: 10;
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 255, 65, 0.1);
+    gap: 1.5rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Adicionado para controlar o layout da div dentro do header */
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite quebrar linha se necessário */
+    gap: 0.5rem;
+}
+
+header h1 {
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 400;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px var(--shadow-color);
+    letter-spacing: 2px;
+}
+
+div input {
+    padding: 0.8rem 1rem;
+    border-radius: 0;
+    border: 2px solid var(--tertiary-color);
+    background: #000;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    width: 25rem; /* Largura padrão desktop */
+    max-width: 100%; /* Impede que quebre o layout */
+    color: var(--primary-color);
+    outline: none;
+    box-shadow: 4px 4px 0px var(--shadow-color);
+    transition: all 0.2s ease;
+}
+
+div input::placeholder {
+    font-size: 1rem;
+    color: var(--tertiary-color);
+    opacity: 0.7;
+}
+
+div input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 2px 2px 0px var(--primary-color);
+    transform: translate(2px, 2px);
+}
+
+/* Estilo base para TODOS os botões do header para garantir 'consistência' mas o tamanho da fonte pode deixar diferente */
+#botao-busca, #botao-random, #btn-sobre {
+    padding: 0.8rem 1.5rem; /* Padding padronizado */
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    box-shadow: 4px 4px 0px var(--tertiary-color);
+    transition: all 0.1s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Especificidades de cada botão */
+#botao-busca {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+#botao-random {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+}
+
+/* tentativa de correçao de tamanho */
+#btn-sobre {
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    font-size: 1.14rem; /* Ajustado para igualar a altura */
+}
+
+/* Efeitos Hover e Active comuns */
+#botao-busca:hover, #botao-random:hover, #btn-sobre:hover{
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    box-shadow: 4px 4px 0px var(--secondary-color);
+    text-shadow: none;
+}
+
+#botao-busca:active, #botao-random:active, #btn-sobre:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+main {
+    max-width: 60rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+    min-height: calc(100vh - 150px);
+}
+
+article {
+    background: var(--card-bg);
+    border: 1px solid var(--tertiary-color);
+    border-left: 4px solid var(--tertiary-color);
+    border-radius: 0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+article::after {
+    content: "DIR_ITEM_001";
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 0.6rem;
+    color: var(--tertiary-color);
+    opacity: 0.5;
+}
+
+article:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    box-shadow: 5px 5px 0px var(--shadow-color);
+}
+
+article h2 {
+    margin-top: 0;
+    font-family: 'VT323', monospace;
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--primary-color);
+    border-bottom: 1px dashed var(--tertiary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+article h2::before {
+    content: "> ";
+    color: var(--secondary-color);
+}
+
+article p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+}
+
+article p strong {
+    color: #ffb000;
+    font-weight: 600;
+    background: rgba(255, 176, 0, 0.1);
+    padding: 0 4px;
+}
+
+article a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary-color);
+    padding: 0 2px;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+article a:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border-bottom-style: solid;
+    box-shadow: 0 0 10px var(--primary-color);
+    cursor: alias;
+}
+
+/* meu nome no menu de about */
+.lubisca {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px groove var(--primary-color);
+    padding: 0 2px;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.lubisca:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border-bottom-style: solid;
+    box-shadow: 0 0 10px var(--primary-color);
+    cursor: alias;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    border-top: 2px solid var(--tertiary-color);
+    padding: 10px 20px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-location {
+    color: var(--tertiary-color);
+}
+
+.footer-location::before {
+    content: "STATUS: ";
+    color: var(--primary-color);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    text-decoration: underline wavy var(--primary-color);
+}
+
+/* --- RESPONSIVIDADE para MOBILE --- */
+@media (max-width: 768px) {
+    
+    /* 1. HEADER COMPACTO */
+    header {
+        padding: 0.8rem; /* Menos borda */
+        gap: 0.8rem; /* Menos espaço entre logo e controles */
+        align-items: stretch; /* Estica os itens */
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 2rem; /* Título um pouco menor */
+    }
+
+    /* Container dos controles (Input + Botões) */
+    header > div {
+        display: flex;
+        flex-wrap: wrap; /* Permite quebrar linha de forma organizada */
+        gap: 0.5rem;
+        justify-content: space-between;
+    }
+
+    /* O Input ocupa 100% da linha sozinho */
+    div input {
+        width: 100%;
+        font-size: 1rem;
+        margin-right: 0;
+        margin-bottom: 0.2rem; /* Pequeno espaço antes dos botões */
+    }
+
+    /* Os Botões dividem o espaço na linha de baixo */
+    #botao-busca, #botao-random {
+        flex-grow: 1; /* Faz os botões crescerem para preencher o espaço */
+        width: auto; /* Remove largura fixa de 100% */
+        padding: 0.6rem; /* Botões um pouco mais baixos */
+        font-size: 1.2rem; /* Fonte ajustada */
+        margin: 0; /* Remove margens extras */
+    }
+
+     #btn-sobre {
+        flex-grow: 1; /* Faz os botões crescerem para preencher o espaço */
+        width: auto; /* Remove largura fixa de 100% */
+        padding: 0.6rem; /* Botões um pouco mais baixos */
+        font-size: 0.9rem; /* Fonte ajustada */
+        margin: 0; /* Remove margens extras */
+     }
+
+    /* O botão de BUSCA ganha destaque */
+    #botao-busca {
+        flex-basis: 100%; /* No mobile, o BUSCAR fica melhor sozinho numa linha ou... */
+        /* Se quiser ele ao lado dos outros, mude flex-basis para auto */
+        flex-basis: auto; 
+        min-width: 80px;
+    }
+
+    /* MAIN (CORPO) */
+    main {
+        padding: 0 1rem;
+        margin-top: 1rem;
+        /* Removemos o cálculo complexo de altura para mobile, deixa rolar natural */
+        min-height: auto; 
+        padding-bottom: 2rem;
+    }
+
+    /* FOOTER */
+    .footer {
+        position: relative; /* Deixa de ser fixo, vai para o final da página */
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 2rem 1rem; /* Padding equilibrado */
+        padding-bottom: 2rem; /* Removemos aquele 80px gigante */
+        border-top: 1px dashed var(--tertiary-color); /* Borda mais leve */
+    }
+
+    /* separar links do footer */
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* --- botao de voltar em cima --- */
+#btn-topo {
+    /* Visual Padrão */
+    background: var(--bg-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 990;
+    
+    /* Flex alinhar ícone e texto */
+    display: none; /* O JS controla isso */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    box-shadow: 4px 4px 0px var(--tertiary-color);
+    transition: all 0.2s;
+}
+
+/* Esconde o texto "VOLTAR AO TOPO" no desktop (deixa só a seta) */
+.texto-btn {
+    display: none;
+}
+
+/* --- VERSÃO DESKTOP (PC) --- */
+@media (min-width: 769px) {
+    #btn-topo {
+        position: fixed; /* Flutua na tela */
+        bottom: 30px;
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0;
+    }
+}
+
+/* --- VERSÃO MOBILE (Celular) --- */
+@media (max-width: 768px) {
+    #btn-topo {
+        /* FORÇA a não flutuar */
+        position: static !important; 
+        transform: none !important;
+        
+        /* Layout de Barra Larga */
+        width: 100%;
+        padding: 15px;
+        margin-top: 2rem;     /* Afasta dos cards */
+        margin-bottom: 1rem;  /* Afasta do footer */
+        
+        /* Visual */
+        background-color: var(--card-bg);
+        border: 1px dashed var(--primary-color);
+    }
+
+    /* isso mostra o texto no mobile para ficar um botão grande */
+    .texto-btn {
+        display: inline-block;
+        font-weight: bold;
+    }
+}
+    /* AJUSTES EXTRAS */
+    
+    /* Modal ocupa mais tela no mobile */
+    .modal-box {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    
+}
+/* --- EFEITOS E EXTRAS E ETC --- */
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake-input {
+    animation: shake 0.5s;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.system-error {
+    border: 2px solid var(--primary-color);
+    background-color: rgba(20, 0, 0, 0.9);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: 10px 10px 0px #500012;
+    animation: glitch-entry 0.3s ease-out;
+}
+
+.system-error h3 {
+    font-family: 'VT323', monospace;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin: 10px 0;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.system-error p {
+    font-family: 'Fira Code', monospace;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.error-icon {
+    font-size: 5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: pulse 5s infinite;
+}
+
+.blinking {
+    animation: blink 2s step-end infinite;
+    color: #ff003c !important;
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glitch-entry {
+    0% { transform: scale(0.1); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* --- "Click to Copy" nos exemplos (COM CORREÇÃO MOBILE) --- */
+.copy-code {
+    cursor: copy;
+    border-bottom: 1px dashed var(--tertiary-color);
+    transition: all 0.2s;
+    position: relative;
+    
+    /* --- CORREÇÃO DO BUG DE LARGURA DNV--- */
+    word-break: break-word; /* Obriga a quebrar a linha mesmo no meio da palavra */
+    overflow-wrap: break-word; /* Garante compatibilidade */
+    white-space: normal; /* Permite que o texto flua para a linha de baixo */
+    display: inline-block; /* Faz o elemento respeitar as margens */
+    max-width: 100%; /* Garante que nunca passe de 100% do card */
+}
+
+.copy-code:hover {
+    background-color: var(--tertiary-color);
+    color: var(--bg-color);
+}
+
+.copy-code:hover::after {
+    content: " [COPIAR]";
+    font-size: 0.8rem;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+#toast-notification {
+    position: fixed;
+    bottom: 80px;
+    right: -450px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    box-shadow: -4px -4px 0px var(--shadow-color);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#toast-notification.show {
+    right: 20px;
+}
+
+#toast-notification .icon {
+    font-size: 1.2rem;
+    animation: pulse 1s infinite;
+}
+
+#btn-topo {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    background: var(--bg-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+}
+
+#btn-topo:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* --- MODAL (JANELA SOBRE) --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.modal-box {
+    background-color: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 10px 10px 0px var(--shadow-color);
+    text-align: center;
+    animation: modalEntry 0.3s ease-out;
+}
+
+.modal-title {
+    font-family: 'VT323', monospace;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-top: 0;
+    border-bottom: 1px dashed var(--tertiary-color);
+}
+
+.modal-content p {
+    font-family: 'Fira Code', monospace;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.modal-close {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+@keyframes modalEntry {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
