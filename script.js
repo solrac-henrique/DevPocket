@@ -267,3 +267,9 @@ window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+
+const teclaSom = document.getElementById('tecla-som');
+document.addEventListener('keydown', () => {
+  teclaSom.currentTime = 0;
+  teclaSom.play();
+});
