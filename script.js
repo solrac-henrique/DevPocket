@@ -1,7 +1,6 @@
 let cardContainer = document.querySelector(".card-container");
 let campoBusca = document.querySelector("header input");
 
-
 let dados = [];
 
 async function iniciarBusca() {
@@ -42,27 +41,15 @@ async function iniciarBusca() {
     renderizarCards(dadosFiltrados);
 }
 
-    //começar com cards
-        campoBusca.value = 'a'
-        iniciarBusca()
-        campoBusca.value = ''
-
-function renderizarCards(dados) {
-    cardContainer.innerHTML = "";
-    for (let dado of dados) {
-        let article = document.createElement("article");
-        article.classList.add("card");
-        article.innerHTML = `
-            <h2>${dado.termo}</h2>
-            <p><strong>Definição:</strong> ${dado.definicao}</p>
-            <p><strong>Exemplo:</strong> <code>${dado.exemplo}</code></p>
-            <p><strong>Use quando:</strong> ${dado.usar_em}</p>
-            <p><strong>Evite quando:</strong> ${dado.evitar}</p>
-            <a href="${dado.link}" target="_blank">Saiba mais</a>
-        `;
-        cardContainer.appendChild(article);
-    }
-}
+// Carrega alguns cards de exemplo assim que a página abre.
+// Precisa do "await" aqui dentro porque iniciarBusca() é assíncrona
+// (ela faz um fetch por dentro) — sem isso, a linha que limpa o campo
+// rodava antes da busca terminar de fato.
+(async () => {
+    campoBusca.value = 'a';
+    await iniciarBusca();
+    campoBusca.value = '';
+})();
 
 // Função que cria a tela de erro engraçada
 function acionarModoPanico() {
@@ -89,7 +76,7 @@ campoBusca.addEventListener("keypress", function (event) {
     }
 });
 
-/* --- NOVIDADE 1: Função de Busca Aleatória --- */
+/* --- Função de Busca Aleatória --- */
 async function buscaAleatoria() {
     // Garante que os dados foram carregados
     if (dados.length === 0) {
@@ -115,8 +102,9 @@ async function buscaAleatoria() {
     renderizarCards([termoSorteado]);
 }
 
-
-//testar isso ainda
+// Única versão de renderizarCards (a duplicada simples foi removida —
+// ela nunca era usada de fato, já que esta era declarada depois e
+// sobrescrevia a outra silenciosamente).
 function renderizarCards(listaDados) {
     cardContainer.innerHTML = "";
 
@@ -138,7 +126,6 @@ function renderizarCards(listaDados) {
         // ---------------------
 
         article.innerHTML = `
-
             <h2>${dado.termo}</h2>
             <p><strong>Definição:</strong> ${dado.definicao}</p>
             
@@ -181,7 +168,6 @@ function mostrarNotificacao(mensagem) {
     }, 3000);
 }
 
-
 // Lógica do Botão Topo
 const btnTopo = document.getElementById("btn-topo");
 
@@ -200,6 +186,7 @@ function subirTela() {
         behavior: "smooth" // Rolagem suave
     });
 }
+
 /* --- FUNÇÕES DO MODAL SOBRE --- */
 
 function abrirModal() {
@@ -237,39 +224,61 @@ function escaparHTML(texto) {
         .replace(/'/g, "&#039;");
 }
 
+/* --- EFEITO MATRIX RAIN (full screen) --- */
 const canvas = document.getElementById('matrix-rain');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
-const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789';
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+// Proteção: se por algum motivo o canvas não existir no HTML,
+// o restante do script (busca, modal, som) continua funcionando
+// em vez de travar tudo com um erro fatal aqui.
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-function draw() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#0F0';
-  ctx.font = fontSize + 'px monospace';
-  
-  for (let i = 0; i < drops.length; i++) {
-    const text = chars[Math.floor(Math.random() * chars.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  }
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789';
+    const fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = Array(Math.floor(columns)).fill(1);
+
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0F0';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 33);
+
+    // Redimensionar ao mudar tamanho da janela.
+    // Recalcula também as colunas, senão a chuva fica desalinhada
+    // (mais "buraco" ou sobreposição) depois de redimensionar.
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = canvas.width / fontSize;
+        drops = Array(Math.floor(columns)).fill(1);
+    });
 }
-setInterval(draw, 33);
 
-// Redimensionar ao mudar tamanho da janela
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
+/* --- SOM DE TECLA --- */
 const teclaSom = document.getElementById('tecla-som');
-document.addEventListener('keydown', () => {
-  teclaSom.currentTime = 0;
-  teclaSom.play();
-});
+
+// Proteção: navegadores podem bloquear play() antes de qualquer
+// interação do usuário, e isso joga um erro "rejected" no console
+// se não for tratado. O .catch() silencioso evita isso sem quebrar nada.
+if (teclaSom) {
+    document.addEventListener('keydown', () => {
+        teclaSom.currentTime = 0;
+        teclaSom.play().catch(() => {
+            // Reprodução bloqueada pelo navegador — sem problema,
+            // o som é só um efeito extra, não algo essencial.
+        });
+    });
+}
