@@ -6,7 +6,7 @@
   </p>
 
   <!-- Link do Deploy em destaque -->
-  <a href="https://lubisca.github.io/DevPocket/">
+  <a href="https://solrac-henrique.github.io/DevPocket/">
     <img src="https://img.shields.io/badge/Acesse_o_Sistema-VER_ONLINE-00ff41?style=for-the-badge&logo=github&logoColor=black" alt="Ver Online">
   </a>
 
