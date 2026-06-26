@@ -27,7 +27,7 @@ O **DevPocket** é uma aplicação web desenvolvida para auxiliar estudantes de 
 
 O diferencial está na **User Interface (UI)** imersiva, inspirada em monitores CRT antigos, terminais Linux e filmes de ficção científica dos anos 80/90.
 
-🔗 **Link de acesso:** [https://lubisca.github.io/DevPocket/](https://lubisca.github.io/DevPocket/)
+🔗 **Link de acesso:** [https://solrac-henrique.github.io/DevPocket/](https://solrac-henrique.github.io/DevPocket/)
 
 ---
 
